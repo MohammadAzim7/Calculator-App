@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <!--Font family links-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Fraunces:opsz,wght@9..144,700&family=League+Spartan:wght@700&family=Lexend+Deca&family=Montserrat:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Calculator app</title>
+  
+  <!--Tailwind css basic configuration-->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config={
+      theme:{
+        extend:{
+        fontFamily: {
+          sans: ['League Spartan','sans-serif'],
+          serif: ['','serif'],
+          mono: ['ui-monospace', 'SFMono-Regular'],
+        }, 
+        colors:{
+
+          /*Colors*/
+          /*Theme 1*/ 
+
+          /*Backgrounds*/
+          VeryDarkDesaturatedBlueM: "hsl(222, 26%, 31%)",
+          VeryDarkDesaturatedBlueK:"hsl(223, 31%, 20%)",
+          VeryDarkDesaturatedBlueS: "hsl(224, 36%, 15%)",
+          
+          /*Keys*/
+          DesaturatedDarkBlue: "hsl(225, 21%, 49%)",
+          DesaturatedDarkBlueS: "hsl(224, 28%, 35%)",
+          Red: "hsl(6, 63%, 50%)",
+          DarkRed: "hsl(6, 70%, 34%)",
+          LightGrayishOrange: "hsl(30, 25%, 89%)",
+          GrayishOrange: "hsl(28, 16%, 65%)",
+          
+          /*Text*/
+          VeryDarkGrayishBlue: "hsl(221, 14%, 31%)",
+          White: "hsl(0, 0%, 100%)",
+
+
+          /*Theme 2*/
+
+          /* Backgrounds*/
+          LightGray: "hsl(0, 0%, 90%)",
+          GrayishRed: "hsl(0, 5%, 81%)",
+          VeryLightGray: "hsl(0, 0%, 93%)",
+
+          /*Keys*/
+
+          DarkModerateCyan: "hsl(185, 42%, 37%)",
+          VeryDarkCyan: "hsl(185, 58%, 25%)",
+          Orange: "hsl(25, 98%, 40%)",
+          DarkOrange: "hsl(25, 99%, 27%)",
+          LightGrayishYellow: "hsl(45, 7%, 89%)",
+          DarkGrayishOrange: "hsl(35, 11%, 61%)",
+          /*Text*/
+          VeryDarkGrayishYellow: "hsl(60, 10%, 19%)",
+          White: "hsl(0, 0%, 100%)",
+
+
+          /*Theme 3*/
+
+          /*Backgrounds*/
+
+          VeryDarkVioletM: "hsl(268, 75%, 9%)",
+          VeryDarkVioletK: "hsl(268, 71%, 12%)",
+          /*Keys*/
+          DarkViolet: "hsl(281, 89%, 26%)",
+          VividMagenta: "hsl(285, 91%, 52%)",
+          PureCyan: "hsl(176, 100%, 44%)",
+          SoftCyan : "hsl(177, 92%, 70%)",
+          VeryDarkViolet: "hsl(268, 47%, 21%)",
+          DarkMagenta: "hsl(290, 70%, 36%)",
+          /*Text*/
+          LightYellow: "hsl(52, 100%, 62%)",
+          VeryDarkBlue: "hsl(198, 20%, 13%)",
+          White: "hsl(0, 0%, 100%)",
+        }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <!--Main contianer-->  
+  <div id="main_contianer" class="flex justify-center items-center  bg-VeryDarkDesaturatedBlueM">
+
+    <!--Card-->
+    <div id="card"  class="sm:max-w-lg max-w-xs  my-8 mx-2 sm:my-16 sm:mx-2 text-white ">
+
+      <!--flex card-->
+      <div class="flex flex-col space-y-5">
+    
+
+      <!--Changing Theme and logo  section-->
+        <div class="flex justify-between ">
+
+          <!--Logo-->
+          <div class="">calc</div>
+
+          <!--Themes-->
+          <div class="flex space-x-3 text-[7px] items-center">
+
+            <!--text-->
+            <div class="mt-2">THEME</div>
+
+            <!--Theme numbers and toggle -->
+            <div class="slidecontainer">
+
+              <!--Theme numbers-->
+              <div class="flex justify-around">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+              </div>
+
+              <!--toggle-->
+              <input  type="range" value="1" name="change-theme" min="1" class="slider-theme-1" max="3" id="toggle">
+            </div>
+
+          </div>
+        </div>
+        <!--Input -->
+        <input  type="text" name="input feild" class="px-4 h-20 rounded-lg 
+        text-4xl sm:w-96 max-w-full text-right bg-VeryDarkDesaturatedBlueS  focus:outline-none"  id="user_input">
+
+        <!--Keypad-->
+        <div id="keypad" class="grid grid-cols-4 gap-3 bg-VeryDarkDesaturatedBlueK p-5 text-2xl rounded-lg text-VeryDarkGrayishBlue">
+
+          <button type="button" value="7" class=" border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">7</button>
+          <button type="button" value="8" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3   bg-LightGrayishOrange hover:bg-white">8</button>
+          <button type="button" value="9" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3   bg-LightGrayishOrange hover:bg-white">9</button>
+          <button type="button" value="delete" class="border-b-[3px] rounded rounded-b-[6px] border-DesaturatedDarkBlueS p-2 px-3 text-base text-white bg-DesaturatedDarkBlue hover:brightness-150">DEL</button>
+          <button type="button" value="4" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">4</button>
+          <button type="button" value="5" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">5</button>
+          <button type="button" value="6" class=" border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">6</button>
+          <button type="button" value="+" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">+</button>
+          <button type="button" value="1" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">1</button>
+          <button type="button" value="2" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">2</button>
+          <button type="button" value="3" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">3</button>
+          <button type="button" value="-" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3  bg-LightGrayishOrange hover:bg-white">-</button>
+          <button type="button" value="." class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3 bg-LightGrayishOrange hover:bg-white">.</button>
+          <button type="button" value="0" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3 bg-LightGrayishOrange hover:bg-white">0</button>
+          <button type="button" value="/" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3 bg-LightGrayishOrange hover:bg-white">/</button>
+          <button type="button" value="*" class="border-b-[3px] rounded rounded-b-[6px] border-GrayishOrange p-2 px-3 bg-LightGrayishOrange hover:bg-white">x</button>
+          <button type="button" value="reset" class="border-b-[3px] rounded rounded-b-[6px] border-DesaturatedDarkBlueS px-3 p-2   bg-DesaturatedDarkBlue text-base text-white col-span-2 hover:brightness-150">RESET</button>
+          <button type="button" id="eq" value="=" class="border-b-[3px] rounded rounded-b-[6px] border-DarkRed px-8 py-3  bg-Red  text-white text-base col-span-2 hover:brightness-150">=</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--source--> 
+<div id="source" class="bg-VeryDarkDesaturatedBlueM text-GrayishOrange text-center">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="text-blue-400">Frontend Mentor</a>. 
+  Coded by <a href="#" class="text-blue-400">Mohammad Azim</a>.
+</div>
+
+
+  <script src="app.js"></script>
+</body>
+</html> 
